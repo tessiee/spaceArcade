@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link rel="icon" href="alien.png" />
+
+    <title>Space Arcade</title>
+  </head>
+
+  <body onresize="setAnimationWidth()">
+    <!--HEADER-->
+
+    <hr class="hr-1" />
+    <div class="page-head" id="page-head">
+      <header>
+        <h1>Space Arcade</h1>
+      </header>
+      <br />
+
+      <div class="animation-box" id="animation-box"></div>
+    </div>
+
+    <!--SIDEBAR MENU (GAME LINKS)-->
+    <nav class="sidebar" id="sidebar">
+      <div class="logo">
+        <img src="alien.png" alt="alienFace" />
+      </div>
+      <ul id="menuLinks">
+        <h2 class="exclusive" id="exclusive"><b>Games</b></h2>
+        <li>
+          <a href="#/" id="1"><b>Intergalactic Hailstorm</b></a>
+        </li>
+        <li>
+          <a href="#/" id="2"><b>Space Travel</b></a>
+        </li>
+        <li>
+          <a href="#/" id="3"><b>Cowboys & Aliens</b></a>
+        </li>
+      </ul>
+    </nav>
+
+    <!--BOXES WITH GAMES-->
+
+    
+    <div class="gamesContainer" id="gamesContainer">
+    <div class="gamesBox" id="gamesBox">
+      <div class="gameBox1 hide-game" id="game1Box">
+        <div class="gameInfo hide-game" id="game1Info">
+          <h2>Intergalactic hailstorm</h2>
+          <p>
+            While under attack by evil aliens, Luke gets caught in an
+            intergalactic hailstorm! Help him collect stars and be sure to keep
+            him fueled up.
+          </p>
+        </div>
+
+        <div class="game" id="game1">
+          <button
+            type="button"
+            id="show-controls1"
+            class="show-controls hide-btn"
+          >
+            SHOW CONTROLS
+          </button>
+          <div id="controls1" class="controls-box hide-controls">
+            <button type="button" class="left-control controls">
+              ⇦ <br />
+              <p>left</p>
+            </button>
+            <button type="button" class="right-control controls">
+              ⇨ <br />
+              <p>right</p>
+            </button>
+            <button type="button" class="up-control controls">
+              ⇧ <br />
+              <p>up</p>
+            </button>
+            <button type="button" class="down-control controls">
+              ⇩ <br />
+              <p>down</p>
+            </button>
+          </div>
+          <button type="submit" id="playGame1" class="playGame">
+            Play game
+          </button>
+          <canvas
+            height="150"
+            width="300"
+            class="theGame hide-game"
+            id="theGame1"
+          >
+          </canvas>
+          <div id="start-game1" class="start-game hide-screen">
+            <p class="startgame-text">START GAME</p>
+            <button type="button" id="start-btn1" class="start-btn">
+              START
+            </button>
+          </div>
+          <div id="game-over1" class="game-over hide-screen">
+            <p class="gameover-text">GAME OVER</p>
+            <p>PLAY AGAIN?</p>
+            <button type="button" class="play-yes play-again">YES</button>
+            <button type="button" class="play-no play-again">NO</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="gameBox2 hide-game" id="secondGameBox">
+        <div class="gameInfo hide-game" id="secondGameInfo">
+          <h2>Space travel</h2>
+          <p>
+            During his space travel, Luke encounters rogue aliens who wish to
+            stop him from visiting the Earthlings. Eliminate them to secure safe
+            passage.
+          </p>
+        </div>
+
+        <div class="game" id="game2">
+          <button
+            type="button"
+            id="show-controls2"
+            class="show-controls hide-btn"
+          >
+            SHOW CONTROLS
+          </button>
+          <div id="controls2" class="controls-box hide-controls">
+            <button type="button" class="left-control controls">
+              ⇦ <br />
+              <p>left</p>
+            </button>
+            <button type="button" class="right-control controls">
+              ⇨ <br />
+              <p>right</p>
+            </button>
+            <button type="button" class="up-control controls">
+              ⇧ <br />
+              <p>up</p>
+            </button>
+            <button type="button" class="down-control controls">
+              ⇩ <br />
+              <p>down</p>
+            </button>
+            <button type="button" class="f-control controls">
+              F <br />
+              <p>fire</p>
+            </button>
+          </div>
+          <button type="submit" id="playGame2" class="playGame">
+            Play game
+          </button>
+
+          <canvas
+            height="150"
+            width="300"
+            class="theGame hide-game"
+            id="theGame2"
+          >
+          </canvas>
+          <div id="start-game2" class="start-game hide-screen">
+            <p class="startgame-text">START GAME</p>
+            <button type="button" id="start-btn2" class="start-btn">
+              START
+            </button>
+          </div>
+          <div id="game-over2" class="game-over hide-screen">
+            <p class="gameover-text">GAME OVER</p>
+            <p>PLAY AGAIN?</p>
+            <button type="button" class="play-yes play-again">YES</button>
+            <button type="button" class="play-no play-again">NO</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="gameBox3 hide-game" id="thirdGameBox">
+        <div class="gameInfo hide-game" id="thirdGameInfo">
+          <h2>Cowboys & Aliens</h2>
+          <p>
+            Evil cowboys are trying to shoot Luke down! Help him with his
+            landing on planet Earth. <br />
+            Only with his safe landing, peace will come.
+          </p>
+        </div>
+
+        <div class="game" id="game3">
+          <button
+            type="button"
+            id="show-controls3"
+            class="show-controls hide-btn"
+          >
+            SHOW CONTROLS
+          </button>
+          <div id="controls3" class="controls-box hide-controls">
+            <button type="button" class="left-control controls">
+              ⇦ <br />
+              <p>left</p>
+            </button>
+            <button type="button" class="right-control controls">
+              ⇨ <br />
+              <p>right</p>
+            </button>
+            <button type="button" class="up-control controls">
+              ⇧ <br />
+              <p>up</p>
+            </button>
+            <button type="button" class="down-control controls">
+              ⇩ <br />
+              <p>down</p>
+            </button>
+          </div>
+          <button type="submit" id="playGame3" class="playGame">
+            Play game
+          </button>
+
+          <canvas class="theGame hide-game" id="theGame3"> </canvas>
+          <div id="start-game3" class="start-game hide-screen">
+            <p class="startgame-text">START GAME</p>
+            <button type="button" id="start-btn3" class="start-btn">
+              START
+            </button>
+          </div>
+          <div id="game-over3" class="game-over hide-screen">
+            <p class="gameover-text">GAME OVER</p>
+            <p>PLAY AGAIN?</p>
+            <button type="button" class="play-yes play-again">YES</button>
+            <button type="button" class="play-no play-again">NO</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="games.js"></script>
+    <script type="text/javascript" src="headAnimation.js"></script>
+  </body>
+</html>

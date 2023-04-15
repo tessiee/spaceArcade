@@ -1,0 +1,477 @@
+:root {
+  --dark-alien: rgb(4, 31, 0);
+  --alien-colour: rgb(5, 219, 5);
+  --light-alien: rgb(1, 92, 1);
+  --highlighted-alien: rgb(133, 240, 133);
+  --blood-red: rgb(168, 0, 0);
+  --highlighted-blood: rgb(255, 41, 41);
+  --dangerous-yellow: rgb(255, 196, 0);
+  --light-blood: rgb(204, 0, 0);
+  --dark-blood: rgb(110, 0, 0);
+}
+
+@font-face {
+  font-family: HarlowSolid;
+  src: url(Harlow\ Solid\ Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  background-color: black;
+  color: red;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 18px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  border: hidden;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(202, 0, 0);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+/* HEADER */
+
+hr.hr-1 {
+  border: 1px solid red;
+  margin-top: 60px;
+}
+
+header {
+  position: relative;
+}
+
+header h1 {
+  color: var(--alien-colour);
+  font-family: HarlowSolid;
+  font-size: 55px;
+}
+
+.page-head {
+  position: relative;
+  padding-bottom: 80px;
+  align-items: center;
+  z-index: 0;
+}
+
+.head-animation {
+  position: relative;
+  left: 0%;
+}
+
+.alien-animation {
+  position: absolute;
+  left: 2%;
+}
+
+/* SIDEBAR MENU + GAME LINKS*/
+
+#sidebar.highlighted {
+  border-style: solid;
+  box-shadow: 0 2px 10px var(--light-alien);
+}
+
+.sidebar {
+  background-color: black;
+  border: 8px double var(--alien-colour);
+  border-radius: 8px;
+  position: fixed;
+  top: 75px;
+  left: -10px;
+  width: 180px;
+  height: 510px;
+  z-index: 2;
+  box-shadow: 0 2px 10px rgb(0, 0, 0);
+}
+
+.sidebar .logo {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.sidebar .logo img {
+  height: 100px;
+  width: 100px;
+  margin-block: 10px;
+}
+
+.sidebar h2 {
+  padding-bottom: 50px;
+}
+
+.sidebar ul {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding: 15px;
+}
+
+.sidebar ul li a {
+  color: var(--alien-colour);
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  text-shadow: 0 2px 10px rgb(0, 161, 0);
+  font-size: 18.5px;
+}
+
+.sidebar .exclusive {
+  color: red;
+  font-family: HarlowSolid;
+  font-size: 40px;
+}
+
+/* BOX WITH GAMES */
+
+.gamesContainer {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 0;
+}
+
+.gamesBox {
+  position: relative;
+  transform: translateX(-50%) translateY(20%);
+  left: 50%;
+  width: 600px;
+  height: 500px;
+  z-index: 2;
+}
+
+.gameBox h1 {
+  color: var(--alien-colour);
+  font-size: 35px;
+}
+
+.gameBox1 {
+  position: relative;
+  z-index: 2;
+}
+
+.gameBox2 {
+  position: relative;
+  z-index: 2;
+}
+
+.gameBox3 {
+  position: relative;
+  z-index: 2;
+}
+
+.gameInfo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 20px;
+  padding: 20px;
+  height: 140px;
+  width: 600px;
+  background-color: black;
+  border: 3px double red;
+  border-radius: 15px;
+  color: var(--alien-colour);
+}
+
+.gameInfo h2 {
+  font-size: 25px;
+}
+
+.gameInfo.highlightGame {
+  border-style: solid;
+  box-shadow: 0 2px 10px var(--blood-red);
+}
+
+.game {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 180px;
+  padding: 10px;
+  background-color: black;
+  border: 3px double red;
+  border-radius: 15px;
+}
+
+.game.highlightGame {
+  border-style: solid;
+  box-shadow: 0 2px 10px var(--blood-red);
+}
+
+.playGame {
+  padding: 20px;
+  padding-top: 20px;
+  background-color: black;
+  border-radius: 7px;
+  border: 3px double var(--alien-colour);
+  font-size: 19px;
+  font-family: HarlowSolid;
+  color: var(--alien-colour);
+  z-index: 10;
+}
+
+.playGame:hover {
+  border-style: solid;
+  cursor: pointer;
+  box-shadow: 0 2px 10px var(--light-alien);
+}
+
+.inGame {
+  border-style: double;
+  border-color: red;
+  color: red;
+  cursor: pointer;
+}
+
+.inGame:hover {
+  border-style: solid;
+  cursor: pointer;
+  box-shadow: 0 2px 10px red;
+}
+
+.theGame {
+  margin-top: 20px;
+  width: 580px;
+  height: 500px;
+  background-image: linear-gradient(rgb(0, 0, 5), rgb(0, 0, 0));
+  border: 3px double var(--alien-colour);
+  border-radius: 15px;
+}
+
+.theGame p {
+  margin-top: 40%;
+}
+
+.hide-game {
+  display: none;
+}
+
+.controls-box {
+  position: absolute;
+  top: 5px;
+  width: 150px;
+  height: 50px;
+  background-color: black;
+  cursor: pointer;
+}
+
+.controls-box.hide-controls {
+  display: none;
+}
+
+.controls {
+  border: 1px solid var(--alien-colour);
+  background-color: black;
+  border-radius: 20%;
+  height: 20px;
+  width: 20px;
+  font-size: 90%;
+  color: var(--alien-colour);
+  cursor: pointer;
+}
+
+.controls p {
+  color: var(--light-alien);
+  font-size: 13px;
+  margin-top: 0px;
+}
+
+.left-control {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.right-control {
+  position: absolute;
+  top: 15px;
+  left: 40px;
+}
+
+.up-control {
+  position: absolute;
+  top: 15px;
+  left: 70px;
+}
+
+.down-control {
+  position: absolute;
+  top: 15px;
+  left: 95px;
+}
+
+.f-control {
+  position: absolute;
+  top: 16px;
+  left: 130px;
+}
+
+.show-controls {
+  background-color: transparent;
+  border: none;
+  height: 40px;
+  width: 160px;
+  font-size: 60%;
+  text-align: start;
+  padding-left: 25px;
+  z-index: 0;
+  color: var(--light-alien);
+  margin-top: 2px;
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  cursor: pointer;
+}
+
+.show-controls.hide-btn {
+  display: none;
+}
+
+.show-controls:hover {
+  display: none;
+}
+
+.hide-controls .controls {
+  display: none;
+}
+
+.game-over {
+  z-index: 3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.836);
+  margin-top: 20px;
+  width: 605px;
+  height: 200px;
+  border: 2px solid red;
+}
+
+.game-over p {
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.game-over .gameover-text {
+  margin-top: 30px;
+  font-size: 40px;
+}
+
+.play-yes {
+  padding: 4px;
+  padding-top: 2px;
+  margin-top: 15px;
+  background-color: black;
+  border-radius: 7px;
+  border: 3px double var(--alien-colour);
+  color: var(--alien-colour);
+  font-weight: bold;
+}
+
+.play-yes:hover {
+  border-style: solid;
+  cursor: pointer;
+  box-shadow: 0 1px 4px var(--alien-colour);
+  font-weight: 800;
+}
+
+.play-no {
+  padding: 4px;
+  padding-top: 2px;
+  margin-top: 15px;
+  background-color: black;
+  border-radius: 7px;
+  border: 3px double red;
+  color: red;
+  font-weight: bold;
+}
+
+.play-no:hover {
+  border-style: solid;
+  cursor: pointer;
+  box-shadow: 0 1px 4px red;
+  font-weight: 800;
+}
+
+.hide-screen {
+  display: none;
+}
+
+.start-game {
+  z-index: 3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.836);
+  margin-top: 25px;
+  width: 570px;
+  height: 494px;
+  border: none;
+  border-radius: 10px;
+}
+
+.start-game .startgame-text {
+  margin-top: 160px;
+  font-size: 60px;
+  font-weight: 900;
+}
+
+.start-btn {
+  padding: 6px;
+  padding-top: 2px;
+  margin-top: 15px;
+  background-color: transparent;
+  border-radius: 7px;
+  border: 3px double var(--alien-colour);
+  color: var(--alien-colour);
+  font-weight: 900;
+  font-size: 120%;
+}
+
+.start-btn:hover {
+  border-style: solid;
+  cursor: pointer;
+  box-shadow: 0 1px 10px var(--alien-colour);
+  font-size: 130%;
+}
