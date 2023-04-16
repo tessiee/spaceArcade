@@ -19,6 +19,7 @@ const menuLinks = document
 const gamesBox = document.getElementById("gamesBox");
 let chosenGame;
 
+//GAMES
 function hideGames() {
   const gamesArr = gamesBox.children;
   for (x = 0; x < gamesArr.length; x++) {
@@ -36,7 +37,6 @@ function showGames() {
   gameShown.classList.remove("hide-game");
   infoShown.classList.remove("hide-game");
 }
-
 
 function menulinksEventListeners() {
   for (x = 0; x < menuLinks.length; x++) {
