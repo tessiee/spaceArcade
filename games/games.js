@@ -531,21 +531,14 @@ function scorePoints(gameNr, gameScore) {
 
 function speedUp(gameScore) {
   var testScore = /^[1-9]{0,1}[5]{1,2}$/;
-  //let bonusRoundGame = gamePlayed.slice(4) - 1;
   let x;
   if (gameScore == 3 || gameScore == 26 || gameScore == 60) {
     x = "extra";
-  } else if (gameScore == 50) {
-    x = "bonus";
   } else if (testScore.test(gameScore)) {
     x = "speed";
   } else {
     x = "none";
   }
-
-  // if (x == "bonus") {
-  //   bonusRound(bonusRoundGame);
-  // }
 
   if (gamePlayed == "game1") {
     if ((x == "extra") & (SI < starsArray.length - 1)) {
@@ -1176,10 +1169,6 @@ class AlienVertical {
       this.dy = Math.random() * 0.9 + 1.0;
     };
 
-    this.bonus = function () {
-      this.speed = 10;
-    };
-
     this.normal = function () {
       this.speed = 1;
     };
@@ -1771,8 +1760,7 @@ function loseHeart(lukesArray, canvasName) {
   let waitForStart = gamePlayed.slice(4) - 1;
   if (
     startGameScreens[waitForStart].classList.contains("hide-screen") &&
-    gameOverScreens[waitForStart].classList.contains("hide-screen") &&
-    bonusRoundArray[waitForStart].classList.contains("hide-screen")
+    gameOverScreens[waitForStart].classList.contains("hide-screen")
   ) {
     for (var i = 0; i < aliensArray2.length; i++) {
       if (
@@ -1923,8 +1911,7 @@ function moveFuelStarsArray(canvasName, lukesArray) {
     let waitForStart = gamePlayed.slice(4) - 1;
     if (
       startGameScreens[waitForStart].classList.contains("hide-screen") &&
-      gameOverScreens[waitForStart].classList.contains("hide-screen") &&
-      bonusRoundArray[waitForStart].classList.contains("hide-screen")
+      gameOverScreens[waitForStart].classList.contains("hide-screen")
     ) {
       if (
         fuelStarsArray[i].x > lukesArray[0].x - 20 &&
@@ -1967,8 +1954,7 @@ function moveStarsArray(canvasName, lukesArray, gameNr, gameScore) {
     let waitForStart = gamePlayed.slice(4) - 1;
     if (
       startGameScreens[waitForStart].classList.contains("hide-screen") &&
-      gameOverScreens[waitForStart].classList.contains("hide-screen") &&
-      bonusRoundArray[waitForStart].classList.contains("hide-screen")
+      gameOverScreens[waitForStart].classList.contains("hide-screen")
     ) {
       if (
         starsArray[i].x > lukesArray[0].x - 20 &&

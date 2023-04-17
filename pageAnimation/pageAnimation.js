@@ -177,7 +177,7 @@ class animationStars {
   constructor() {
     this.x = randomXstar;
     this.y = randomYstar;
-    this.radius = 1;
+    this.radius = 2;
     this.color = "#3b2c00";
 
     this.draw = function (gameCanvas) {
