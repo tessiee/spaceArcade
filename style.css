@@ -32,7 +32,7 @@ body {
   max-width: 100%;
   max-height: 100%;
   background-color: black;
-  color: red;
+  color: var(--highlighted-blood);
   font-family: "Courier New", Courier, monospace;
   font-size: 18px;
   text-align: center;
@@ -40,32 +40,13 @@ body {
   justify-content: center;
   margin-top: 20px;
   position: relative;
-  overflow-x: hidden;
-}
-
-::-webkit-scrollbar {
-  width: 15px;
-  border: hidden;
-}
-
-::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: 50px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgb(202, 0, 0);
-  border-radius: 6px;
-}
-
-::-webkit-scrollbar-corner {
-  background-color: transparent;
+  overflow: hidden;
 }
 
 /* HEADER */
 
 hr.hr-1 {
-  border: 1px solid red;
+  border: 1px solid var(--highlighted-blood);
   margin-top: 60px;
 }
 
@@ -100,20 +81,18 @@ header h1 {
 
 #sidebar.highlighted {
   border-style: solid;
-  box-shadow: 0 2px 10px var(--light-alien);
 }
 
 .sidebar {
   background-color: black;
-  border: 8px double var(--alien-colour);
-  border-radius: 8px;
+  border: 6px double var(--highlighted-blood);
+  border-radius: 15px;
   position: fixed;
   top: 125px;
   left: -10px;
-  width: 180px;
+  width: 200px;
   height: 450px;
   z-index: 2;
-  box-shadow: 0 2px 10px rgb(0, 0, 0);
 }
 
 .sidebar .logo {
