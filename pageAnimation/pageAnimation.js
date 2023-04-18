@@ -1,4 +1,4 @@
-// HEADER ANIMATION
+// VARIABLES
 const animationBox = document.getElementById("animation-box");
 let maxXstar = window.innerWidth - 100;
 
@@ -11,52 +11,27 @@ const headAnimationCanvas = document.getElementById("head-animation");
 const alienAnimationCanvas = document.getElementById("alien-animation");
 const ctxHeadAnimation = headAnimationCanvas.getContext("2d");
 const ctxAlienAnimation = alienAnimationCanvas.getContext("2d");
-let requestIdHeadAnimation;
-let requestIdAlienAnimation;
-let animationStarsArray = [];
-let aliensArray3 = [];
-let particles = [];
-let maxStars = 150;
-let pause = 90;
-let start = 0;
-let randomXstar;
-let randomYstar;
-let side = 0;
-let marginX = -50;
-let directionA = 1;
-let AC;
+const maxStars = 150,
+  pause = 90;
 
-class Particle {
-  constructor(x, y, radius, dx, dy) {
-    this.x = x;
-    this.y = y;
-    this.radius = radius;
-    this.dx = dx;
-    this.dy = dy;
-    this.alpha = 1;
-  }
-  draw() {
-    ctxAlienAnimation.save();
-    ctxAlienAnimation.globalAlpha = this.alpha;
-    ctxAlienAnimation.fillStyle = "red";
-    ctxAlienAnimation.beginPath();
-    ctxAlienAnimation.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    ctxAlienAnimation.fill();
-    ctxAlienAnimation.restore();
-  }
-  update() {
-    this.draw();
-    this.alpha -= 0.01;
-    this.x += this.dx;
-    this.y += this.dy;
-  }
-}
+let requestIdHeadAnimation, requestIdAlienAnimation;
+let randomXstar, randomYstar;
+let animationStarsArray = [],
+  aliensArray3 = [],
+  start = 0,
+  side = 0,
+  marginX = -50,
+  directionA = 1,
+  alienDY = 2;
+
+//OBJECT CLASSES
 
 class Alien3 {
   constructor(canvasName) {
+    this.speed = 2.5 * directionA * (Math.random() * 1.6 + 1.0);
     this.x = maxXstar * side + marginX;
     this.y = canvasName.height * (Math.random() * 0.8 + 0.1);
-    this.dx = 2.5 * directionA * (Math.random() * 1.6 + 1.0);
+    this.dx = this.speed;
     this.dy = 0;
     this.size = 3;
 
@@ -166,9 +141,20 @@ class Alien3 {
     };
 
     this.reset = function (canvasName) {
+      this.speed = 2.5 * directionA * (Math.random() * 1.6 + 1.0);
       this.x = maxXstar * side + marginX;
       this.y = canvasName.height * (Math.random() * 0.8 + 0.1);
-      this.dx = 2.5 * directionA * (Math.random() * 1.6 + 1.0);
+      this.dx = this.speed;
+    };
+
+    this.evade = function () {
+      this.dx = 0;
+      this.dy = alienDY;
+    };
+
+    this.continue = function () {
+      this.dy = 0;
+      this.dx = this.speed;
     };
   }
 }
@@ -189,6 +175,8 @@ class animationStars {
     };
   }
 }
+
+//ANIMATION FUNCTIONS
 
 function setAnimationWidth() {
   maxXstar = window.innerWidth - 100;
@@ -218,7 +206,7 @@ function fillAnimationStarsArray(gameCanvas, maxStars) {
 }
 
 function fillAliensArray3(canvasName) {
-  for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < 5; i++) {
     aliensArray3[i] = new Alien3(canvasName);
     if (side == 0) {
       side = 1;
@@ -258,67 +246,34 @@ function moveAliensArray3(canvasName) {
   }
 }
 
-function resetAliensArray3(canvasName) {
-  for (var i = 0; i < aliensArray3.length; i++) {
-    if (side == 0) {
-      side = 1;
-      marginX = 50;
-      directionA = -1;
-    } else {
-      side = 0;
-      marginX = -50;
-      directionA = 1;
-    }
-    aliensArray3[i].reset(canvasName);
-  }
-}
+function alienEvasion(alienArray) {
+  for (let alienOne = 0; alienOne < alienArray.length; alienOne++) {
+    for (let alienTwo = 0; alienTwo < alienArray.length; alienTwo++) {
+      if (alienOne !== alienTwo) {
+        if (
+          alienArray[alienOne].x > alienArray[alienTwo].x - 30 &&
+          alienArray[alienOne].x < alienArray[alienTwo].x + 30 &&
+          alienArray[alienOne].y > alienArray[alienTwo].y - 30 &&
+          alienArray[alienOne].y < alienArray[alienTwo].y + 30
+        ) {
+          if (alienDY == 2) {
+            alienDY = -2;
+          } else {
+            alienDY = 2;
+          }
 
-function alienCollision(AC, canvasName) {
-  for (let AI = 0; AI < aliensArray3.length; AI++) {
-    if (AC !== AI) {
-      if (
-        aliensArray3[AC].x > aliensArray3[AI].x - 10 &&
-        aliensArray3[AC].x < aliensArray3[AI].x + 10 &&
-        aliensArray3[AC].y > aliensArray3[AI].y - 10 &&
-        aliensArray3[AC].y < aliensArray3[AI].y + 10
-      ) {
-        for (i = 0; i <= 150; i++) {
-          let dx = (Math.random() - 0.5) * Math.random();
-          let dy = (Math.random() - 0.5) * Math.random();
-          let radius = Math.random() * 2;
-          let particle = new Particle(
-            aliensArray3[AC].x,
-            aliensArray3[AC].y,
-            radius,
-            dx,
-            dy
-          );
+          alienArray[alienOne].evade();
 
-          particles.push(particle);
+          setTimeout(() => {
+            alienArray[alienOne].continue();
+          }, 200);
         }
-        aliensArray3[AI].dx = 0;
-        aliensArray3[AC].dx = 0;
-        explode();
-        setTimeout(() => {
-          aliensArray3[AC].reset(canvasName);
-          aliensArray3[AI].reset(canvasName);
-        }, 500);
       }
     }
   }
 }
 
-function explode() {
-  particles.forEach((particle, i) => {
-    if (particle.alpha <= 0) {
-      particles.splice(i, 1);
-    } else particle.update();
-  });
-
-  requestAnimationFrame(explode);
-}
-
-fillAliensArray3(alienAnimationCanvas);
+//DRAWIMG + ACTION FUNCTIONS
 
 function drawHeadAnimation() {
   emptyCanvas(ctxHeadAnimation, headAnimationCanvas);
@@ -336,7 +291,6 @@ function headAnimationAction(current) {
   }
   requestIdHeadAnimation = requestAnimationFrame(headAnimationAction);
 }
-requestIdHeadAnimation = requestAnimationFrame(headAnimationAction);
 
 function drawAlienAnimation() {
   emptyCanvas(ctxAlienAnimation, alienAnimationCanvas);
@@ -346,9 +300,12 @@ function drawAlienAnimation() {
 function headAlienAction() {
   drawAlienAnimation();
   moveAliensArray3(alienAnimationCanvas);
-  alienCollision(0, alienAnimationCanvas);
-  alienCollision(1, alienAnimationCanvas);
-  alienCollision(2, alienAnimationCanvas);
+  alienEvasion(aliensArray3);
   requestIdAlienAnimation = requestAnimationFrame(headAlienAction);
 }
+
+//GET ANIMATION GOING
+
+fillAliensArray3(alienAnimationCanvas);
+requestIdHeadAnimation = requestAnimationFrame(headAnimationAction);
 headAlienAction();

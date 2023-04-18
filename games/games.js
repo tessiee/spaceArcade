@@ -283,13 +283,11 @@ function gameLightOff() {
 
 function highLightGame() {
   let pick = event.target.parentElement.id;
-  console.log(pick);
   const gameBox = document.getElementById(`${pick}Box`);
   const gameInfo = document.getElementById(`${pick}Info`);
   const game = document.getElementById(
     `the${(pick.charAt(0).toUpperCase() + pick.slice(1))}`
   );
-  console.log(pick);
 
   if (game.classList.contains("hide-game")) {
     gameInfo.classList.contains("highlightGame")
@@ -548,7 +546,6 @@ function speedUp(gameScore) {
   }
   if (gamePlayed == "game2") {
     if ((x == "speed") & (heartNr != undefined)) {
-      console.log("bleh");
       heartsArray[heartNr].fall();
     }
   }
