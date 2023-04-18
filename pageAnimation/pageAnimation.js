@@ -33,12 +33,12 @@ class Alien3 {
     this.y = canvasName.height * (Math.random() * 0.8 + 0.1);
     this.dx = this.speed;
     this.dy = 0;
-    this.size = 3;
+    this.size = 6;
 
     this.draw = function (gameCanvas) {
       drawRoundObject(
         gameCanvas,
-        "#05db05",
+        "#97E1FF",
         this.x,
         this.y,
         this.size,
@@ -46,33 +46,13 @@ class Alien3 {
         Math.PI - 0.5,
         true
       );
-      drawRoundObject(
-        gameCanvas,
-        "#FF0000",
-        this.x - 1.5,
-        this.y,
-        1,
-        -100,
-        Math.PI - 0.5,
-        true
-      );
-      drawRoundObject(
-        gameCanvas,
-        "#FF0000",
-        this.x + 1.5,
-        this.y,
-        1,
-        -100,
-        Math.PI - 0.5,
-        true
-      );
       drawEllipseObject(
         gameCanvas,
-        "#FF0000",
+        "#9E9E9E",
         this.x,
         this.y + 4,
-        10,
-        2,
+        15,
+        3,
         0,
         0,
         Math.PI * 2,
@@ -80,7 +60,7 @@ class Alien3 {
       );
       drawRoundObject(
         gameCanvas,
-        "#05db05",
+        "#FF0000",
         this.x - 3,
         this.y + 4.2,
         1,
@@ -90,7 +70,7 @@ class Alien3 {
       );
       drawRoundObject(
         gameCanvas,
-        "#05db05",
+        "#FF0000",
         this.x + 3,
         this.y + 4.2,
         1,
@@ -100,8 +80,8 @@ class Alien3 {
       );
       drawRoundObject(
         gameCanvas,
-        "#05db05",
-        this.x - 7,
+        "#FF0000",
+        this.x - 8,
         this.y + 4.2,
         1,
         -100,
@@ -110,8 +90,8 @@ class Alien3 {
       );
       drawRoundObject(
         gameCanvas,
-        "#05db05",
-        this.x + 7,
+        "#FF0000",
+        this.x + 8,
         this.y + 4.2,
         1,
         -100,
@@ -120,8 +100,8 @@ class Alien3 {
       );
       drawRoundObject(
         gameCanvas,
-        "#05db05",
-        this.x - 11,
+        "#FF0000",
+        this.x - 13,
         this.y + 4.2,
         1,
         -100,
@@ -130,8 +110,8 @@ class Alien3 {
       );
       drawRoundObject(
         gameCanvas,
-        "#05db05",
-        this.x + 11,
+        "#FF0000",
+        this.x + 13,
         this.y + 4.2,
         1,
         -100,
