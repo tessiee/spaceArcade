@@ -286,7 +286,7 @@ function highLightGame() {
   const gameBox = document.getElementById(`${pick}Box`);
   const gameInfo = document.getElementById(`${pick}Info`);
   const game = document.getElementById(
-    `the${(pick.charAt(0).toUpperCase() + pick.slice(1))}`
+    `the${pick.charAt(0).toUpperCase() + pick.slice(1)}`
   );
 
   if (game.classList.contains("hide-game")) {
@@ -943,7 +943,7 @@ class Star {
     };
 
     this.fall = function () {
-      this.dx = -2;
+      this.dx = -1;
     };
 
     this.return = function (canvasName) {
@@ -991,7 +991,7 @@ class Heart {
       this.y = -20;
     };
     this.fall = function () {
-      this.dy = 2;
+      this.dy = 1;
     };
     this.reset = function (canvasName) {
       this.x = canvasName.width - marginXheart;
@@ -1005,7 +1005,7 @@ class Heart {
 class FuelBar {
   constructor() {
     this.w = 45;
-    this.fu = 0.05;
+    this.fu = 0.02;
 
     this.draw = function (gameCanvas, canvasName) {
       gameCanvas.beginPath();
@@ -1034,7 +1034,7 @@ class FuelBar {
 
     this.reset = function () {
       this.w = 45;
-      this.fu = 0.05;
+      this.fu = 0.02;
     };
 
     this.pause = function () {
@@ -1050,8 +1050,8 @@ class AlienVertical {
     this.w = 60;
     this.h = 4;
     this.size = 3;
-    this.dx = (Math.random() * 2 + 1) * direction;
-    this.dy = Math.random() * 0.9 + 1.0;
+    this.dx = (Math.random() + 0.5) * direction;
+    this.dy = Math.random();
     this.speed = 1;
 
     this.draw = function (gameCanvas) {
@@ -1162,8 +1162,8 @@ class AlienVertical {
     this.reset = function (canvasName) {
       this.x = canvasName.width * (Math.random() * 0.7 + 0.2);
       this.y = -(Math.random() * 200 + 10);
-      this.dx = (Math.random() * 2 + 1) * direction;
-      this.dy = Math.random() * 0.9 + 1.0;
+      this.dx = (Math.random() + 0.5) * direction;
+      this.dy = Math.random();
     };
 
     this.normal = function () {
@@ -1179,8 +1179,8 @@ class AlienHorizontal {
     this.w = 60;
     this.h = 4;
     this.size = 3;
-    this.speed = Math.random() * 0.8 + 0.8;
-    this.dx = -2.5;
+    this.speed = Math.random() + 0.8;
+    this.dx = -1.5;
     this.dy = 0;
 
     this.draw = function (gameCanvas) {
@@ -1290,8 +1290,8 @@ class AlienHorizontal {
 
     this.reset = function (canvasName) {
       this.x = canvasName.width + (Math.random() * 460 + 20);
-      this.y = canvasName.height * (Math.random() * 0.8 + 0.1);
-      this.dx = -2.5;
+      this.y = canvasName.height * (Math.random() + 0.1);
+      this.dx = -1.5;
       this.dy = 0;
       this.speed = Math.random() * 0.8 + 0.8;
     };
@@ -1337,7 +1337,7 @@ class Cowboy {
 
     this.update = function () {
       this.x = positionXcowboy;
-      this.dx = 2 * directionC;
+      this.dx = 1 * directionC;
     };
 
     this.reset = function (canvasName) {
@@ -1352,9 +1352,9 @@ class EnemyBullet {
   constructor() {
     this.x = cowboyX;
     this.y = cowboyY - 10;
-    this.speed = 2;
+    this.speed = 1;
     this.dx = 0.5;
-    this.dy = -2;
+    this.dy = -1;
 
     this.draw = function (gameCanvas) {
       gameCanvas.beginPath();
@@ -1372,9 +1372,9 @@ class EnemyBullet {
     this.reset = function () {
       this.x = cowboyX;
       this.y = cowboyY - 10;
-      this.speed = 2;
+      this.speed = 1;
       this.dx = 0.5;
-      this.dy = -2;
+      this.dy = -1;
     };
   }
 }
@@ -1383,9 +1383,9 @@ class Comet {
   constructor(canvasName) {
     this.x = canvasName.width + (Math.random() * 460 + 20);
     this.y = canvasName.height * (Math.random() * 0.8 + 0.1);
-    this.dx = -2.5;
+    this.dx = -1.5;
     this.dy = 0;
-    this.speed = 1.2;
+    this.speed = 1;
     this.size = Math.random() * 2.8 + 7.1;
 
     this.draw = function (gameCanvas) {
@@ -1430,9 +1430,9 @@ class Comet {
     this.reset = function (canvasName) {
       this.x = canvasName.width + (Math.random() * 460 + 20);
       this.y = canvasName.height * (Math.random() * 0.8 + 0.1);
-      this.dx = -2.5;
+      this.dx = -1.5;
       this.dy = 0;
-      this.speed = 1.2;
+      this.speed = 1;
     };
   }
 }
@@ -1441,9 +1441,9 @@ class Rock {
   constructor(canvasName) {
     this.x = canvasName.width + (Math.random() * 460 + 20);
     this.y = canvasName.height * (Math.random() * 0.8 + 0.1);
-    this.dx = -2.5;
+    this.dx = -1.5;
     this.dy = 0;
-    this.speed = Math.random() * 0.6 + 1.2;
+    this.speed = Math.random() * 0.6 + 1;
     this.w = 20;
     this.h = 10;
     this.size = Math.random() * 3.5 + 3.1;
@@ -1490,9 +1490,9 @@ class Rock {
     this.reset = function (canvasName) {
       this.x = canvasName.width + (Math.random() * 460 + 20);
       this.y = canvasName.height * (Math.random() * 0.8 + 0.1);
-      this.dx = -2.5;
+      this.dx = -1.5;
       this.dy = 0;
-      this.speed = Math.random() * 0.6 + 1.2;
+      this.speed = Math.random() * 0.6 + 1;
     };
   }
 }

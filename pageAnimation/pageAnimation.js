@@ -22,13 +22,13 @@ let animationStarsArray = [],
   side = 0,
   marginX = -50,
   directionA = 1,
-  alienDY = 2;
+  alienDY = 1;
 
 //OBJECT CLASSES
 
 class Alien3 {
   constructor(canvasName) {
-    this.speed = 2.5 * directionA * (Math.random() * 1.6 + 1.0);
+    this.speed = directionA * (Math.random() * 1.6 + 1.0);
     this.x = maxXstar * side + marginX;
     this.y = canvasName.height * (Math.random() * 0.8 + 0.1);
     this.dx = this.speed;
@@ -121,7 +121,7 @@ class Alien3 {
     };
 
     this.reset = function (canvasName) {
-      this.speed = 2.5 * directionA * (Math.random() * 1.6 + 1.0);
+      this.speed = directionA * (Math.random() * 1.6 + 1.0);
       this.x = maxXstar * side + marginX;
       this.y = canvasName.height * (Math.random() * 0.8 + 0.1);
       this.dx = this.speed;
@@ -236,10 +236,10 @@ function alienEvasion(alienArray) {
           alienArray[alienOne].y > alienArray[alienTwo].y - 30 &&
           alienArray[alienOne].y < alienArray[alienTwo].y + 30
         ) {
-          if (alienDY == 2) {
-            alienDY = -2;
+          if (alienDY == 1) {
+            alienDY = -1;
           } else {
-            alienDY = 2;
+            alienDY = 1;
           }
 
           alienArray[alienOne].evade();
